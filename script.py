@@ -97,8 +97,9 @@ def main(argv=None):
     log.debug(args)
 
     # Program go here...
-
-
+    print(os.getpid())
+    import time
+    time.sleep(10)
 
 
 if __name__ == '__main__':
@@ -112,4 +113,14 @@ if __name__ == '__main__':
         log.critical(e, exc_info=True)
         sys.exit(1)
     except KeyboardInterrupt:
-        sys.exit(2)  # signal.SIGINT.value
+        log.info("Aborting")
+        import signal
+        signal.signal(signal.SIGINT, signal.SIG_DFL)
+        os.kill(os.getpid(), signal.SIGINT)
+    # Alternatives:
+    except KeyboardInterrupt:
+        log.info("Aborting")
+        sys.exit(2)  # signal.SIGINT.value, but not actually killed by SIGINT
+    except KeyboardInterrupt:
+        log.info("Aborting")
+        sys.exit(130)  # emulating status from shells: 128 + signal.SIGINT
