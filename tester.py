@@ -5,7 +5,7 @@
 # License: GPLv3 or later, at your choice. See <http://www.gnu.org/licenses/gpl>
 
 """
-NBT Libraries test
+CLI library demo
 """
 
 import logging
@@ -17,8 +17,6 @@ import sys
 
 
 # =============================================================================
-
-
 def main():
     loglevel = logging.INFO
     funcs = tuple(k for k, v in globals().items()
@@ -50,7 +48,7 @@ def main():
 
     res = globals()[func](*args)
     if res is not None:
-        print(repr(res))
+        print(res if isinstance(res, str) else repr(res))
 
 
 log = logging.getLogger(__name__)
