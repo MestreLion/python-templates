@@ -1,0 +1,18 @@
+- Settings for New Projects is useless for customizing Inspections:
+	- New Projects will always have IDE profile by default
+	- Changes to IDE Profile can be done from any project
+	- Changes to Project Profile will be lost (new Project will have blank default project profile)
+	- If Project Profile is renamed, New Project UI will have no Project Profile
+
+- Inspection Profiles:
+	- Rename Default IDE PRofile (to Rodrigo IDE), use it only as template for new projects
+	- On New Project, Copy IDE Profile to Project Profile and rename it to Project Name (to avoid ambiguity)
+	- If some setting is globally useful, add to both profiles
+
+- Spelling:
+	- Check "use a single dictionary", keep at "project=level"
+	- Keep both [built-in] dicts as is
+	- Add words to project dict
+	- Adding in Dialog UI *always* add to *project*, regardless of current selection
+	- If a global word, switch to "application-level", add (using the Editor), switch back
+	- If project-level words dont get saved, delete ./idea/dictonaries so it can be re-created as folder
