@@ -16,3 +16,10 @@
 	- Adding in Dialog UI *always* add to *project*, regardless of current selection
 	- If a global word, switch to "application-level", add (using the Editor), switch back
 	- If project-level words dont get saved, delete ./idea/dictonaries so it can be re-created as folder
+
+- More Undos
+	- File > Local History is a good alternative
+	- Help > Find > Registry
+		- undo.globalUndoLimit, undo.documentUndoLimit
+		https://youtrack.jetbrains.com/issue/WI-21306
+		https://stackoverflow.com/q/59423614/624066

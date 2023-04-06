@@ -1,0 +1,9 @@
+Project:
+- Black / isort
+- Pytest / unittest
+- mypy / pytype / pyright
+- flake8 / flake8-docstrings
+- tox?
+- codecov
+- Github Actions / Travis CI
+- bump2version
