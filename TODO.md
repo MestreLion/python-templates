@@ -1,13 +1,13 @@
-Project:
+# To-Do
 - Black / isort
 - Pytest / unittest
 - mypy / pytype / pyright
 - Ruff (to replace flake8 / flake8-docstrings, isort and others)
 - tox?
 - codecov
-- Github Actions / Travis CI
+- GitHub Actions / Travis CI
 - bump2version
 - Pre-commit
 - FPM, .deb and Windows installers
 - Badges
-- Github Templates
+- GitHub Templates
