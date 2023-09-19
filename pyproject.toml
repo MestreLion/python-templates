@@ -1,0 +1,83 @@
+# -----------------------------------------------------------------------------
+# Metadata
+# https://packaging.python.org/en/latest/specifications/declaring-project-metadata/
+[project]
+name = "PROJECT"
+authors = [
+    {name="Rodrigo Silva (MestreLion)", email="linux@rodrigosilva.com"},
+]
+description = "SHORT DESCRIPTION"
+license =  {text = "GPL-3.0-or-later"}  # Free text, using SPDX for now
+urls."Homepage" = "https://github.com/MestreLion/PROJECT"
+urls."Source Code" = "https://github.com/MestreLion/PROJECT"
+urls."Issue Tracker" = "https://github.com/MestreLion/PROJECT/issues"
+readme = "README.md"
+keywords = ["SOME", "KEY", "WORDS"]
+classifiers = [
+    # https://pypi.org/classifiers/
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: ...",
+    "License :: OSI Approved :: GNU General Public License v3 or later (GPLv3+)",
+    "Natural Language :: English",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.7",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Topic :: ...",
+    "Typing :: Typed",
+]
+dynamic = ["version"]
+
+# -----------------------------------------------------------------------------
+# Requirements
+requires-python = ">=3.7"  # setuptools >= 59.3, typing_extensions
+dependencies = [
+    # For Self (3.11), TypeAlias (3.10), possibly others
+    # v4.7.0 exports all names from typing, a welcome convenience
+    "typing_extensions >= 4.7; python_version < '3.11'",
+]
+[project.optional-dependencies]
+dev = [
+    "black",
+    "mypy >= 0.900",  # pyproject.toml
+]
+publish = [
+    "build",
+    "twine",
+]
+# -----------------------------------------------------------------------------
+# Entry points
+[project.scripts]
+PROJECT = "PROJECT.main:run"
+
+# -----------------------------------------------------------------------------
+# Building
+# https://setuptools.pypa.io/en/latest/userguide/pyproject_config.html
+[build-system]
+requires = ["setuptools >= 61.0"]  # Supports pyproject.toml configuration
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools]
+#packages = ["PROJECT"]  # for flat-layout only
+package-data = {'*' = ['py.typed']}
+
+[tool.setuptools.dynamic]
+version = {attr = "PROJECT.main.__version__"}
+
+# -----------------------------------------------------------------------------
+# Tools
+
+# Run as: make check
+[tool.mypy]
+packages = "PROJECT"
+exclude = ["venv"]
+strict = true
+
+# Run as: make format
+[tool.black]
+target-version = ["py37", "py38", "py39", "py310", "py311"]
+line-length = 96
