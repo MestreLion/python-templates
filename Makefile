@@ -6,7 +6,7 @@
 # Advanced version found at https://github.com/MestreLion/hackmatch
 
 # For customizing defaults, such as PYTHON
-include .env
+-include .env
 
 ## SLUG: Short project name
 SLUG     ?= PROJECT
@@ -53,18 +53,18 @@ build: venv default
 upload: venv build
 	$(venv)/twine upload --repository $(SLUG) -- dist/*
 
-$(venv): pyproject.toml
+$(ENV_DIR)/done: pyproject.toml
 	$(PYTHON) -m venv $(ENV_DIR)
 	$(python) -m pip --disable-pip-version-check install --upgrade pip
 #	$(pip) install --upgrade setuptools  # likely not needed, as build will be isolated
 	$(pip) install --upgrade -e .[dev,publish]
-	touch -- $(venv)
+	touch -- $@
 
 .PHONY: default run format check build upload
 # -----------------------------------------------------------------------------
 
 ## - venv: create a virtual environment in $ENV_DIR, by default `./venv`
-venv: $(venv)
+venv: $(ENV_DIR)/done
 
 ## - venv-clean: remove the virtual environment
 venv-clean:
