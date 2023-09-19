@@ -48,6 +48,7 @@ class ProjectError(Exception):
     All modules in this package raise this (or a subclass) for all
     explicitly raised, business-logic, expected or handled exceptions
     """
+
     def __init__(self, msg: object = "", *args, errno: int = 0, e: Exception = None):
         super().__init__((str(msg) % args) if args else msg)
         self.errno = errno
@@ -58,37 +59,43 @@ def parse_args(argv=None):
     parser = argparse.ArgumentParser(
         description=__doc__,
         epilog=COPYRIGHT,
-        formatter_class=argparse.RawDescriptionHelpFormatter
+        formatter_class=argparse.RawDescriptionHelpFormatter,
     )
 
     group = parser.add_mutually_exclusive_group()
-    group.add_argument('-q', '--quiet',
-                       dest='loglevel',
-                       const=logging.WARNING,
-                       default=logging.INFO,
-                       action="store_const",
-                       help="Suppress informative messages.")
+    group.add_argument(
+        "-q",
+        "--quiet",
+        dest="loglevel",
+        const=logging.WARNING,
+        default=logging.INFO,
+        action="store_const",
+        help="Suppress informative messages.",
+    )
 
-    group.add_argument('-v', '--verbose',
-                       dest='loglevel',
-                       const=logging.DEBUG,
-                       action="store_const",
-                       help="Verbose mode, output extra info.")
+    group.add_argument(
+        "-v",
+        "--verbose",
+        dest="loglevel",
+        const=logging.DEBUG,
+        action="store_const",
+        help="Verbose mode, output extra info.",
+    )
 
-    parser.add_argument('-a', '--arg',
-                        default="somearg",
-                        help="Some Arg."
-                             " [Default: %(default)s]")
+    parser.add_argument(
+        "-a", "--arg", default="somearg", help="Some Arg." " [Default: %(default)s]"
+    )
 
-    parser.add_argument('-o', '--option',
-                        dest='option',
-                        default=False,
-                        action="store_true",
-                        help="Some Option.")
+    parser.add_argument(
+        "-o",
+        "--option",
+        dest="option",
+        default=False,
+        action="store_true",
+        help="Some Option.",
+    )
 
-    parser.add_argument(nargs='*',
-                        dest='files',
-                        help="Some files.")
+    parser.add_argument(nargs="*", dest="files", help="Some files.")
 
     args = parser.parse_args(argv)
     args.debug = args.loglevel == logging.DEBUG
@@ -104,17 +111,17 @@ def main(argv: t.Optional[t.List[str]] = None):
         datefmt="%Y-%m-%d %H:%M:%S",
     )
 
-    logging.basicConfig(level=args.loglevel,
-                        format='%(levelname)-5.5s: %(message)s')
+    logging.basicConfig(level=args.loglevel, format="%(levelname)-5.5s: %(message)s")
     log.debug(args)
 
     # Program go here...
     print(os.getpid())
     import time
+
     time.sleep(10)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     try:
         sys.exit(main(sys.argv[1:]))
     except BrokenPipeError:
@@ -129,6 +136,7 @@ if __name__ == '__main__':
     except KeyboardInterrupt:
         log.info("Aborting")
         import signal
+
         signal.signal(signal.SIGINT, signal.SIG_DFL)
         os.kill(os.getpid(), signal.SIGINT)
     # Alternatives:

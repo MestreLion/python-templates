@@ -19,24 +19,25 @@ import sys
 # =============================================================================
 def main():
     loglevel = logging.INFO
-    funcs = tuple(k for k, v in globals().items()
-                  if callable(v) and k not in ('main',))
+    funcs = tuple(k for k, v in globals().items() if callable(v) and k not in ("main",))
 
     # Lame argparse
-    if len(sys.argv) <= 1 or '--help' in sys.argv[1:] or '-h' in sys.argv[1:]:
-        print("Usage: {} FUNCTION [ARGS...]\nAvailable functions:\n\t{}".format(
-            __file__, "\n\t".join(funcs)))
+    if len(sys.argv) <= 1 or "--help" in sys.argv[1:] or "-h" in sys.argv[1:]:
+        print(
+            "Usage: {} FUNCTION [ARGS...]\nAvailable functions:\n\t{}".format(
+                __file__, "\n\t".join(funcs)
+            )
+        )
         return
-    if '-v' in sys.argv[1:]:
+    if "-v" in sys.argv[1:]:
         loglevel = logging.DEBUG
-        sys.argv.remove('-v')
-    logging.basicConfig(level=loglevel, format='%(levelname)-5.5s: %(message)s')
+        sys.argv.remove("-v")
+    logging.basicConfig(level=loglevel, format="%(levelname)-5.5s: %(message)s")
 
     func = sys.argv[1]
     args = sys.argv[2:]
     if func not in funcs:
-        log.error("Function %r does not exist! Try one of:\n\t%s",
-                  func, "\n\t".join(funcs))
+        log.error("Function %r does not exist! Try one of:\n\t%s", func, "\n\t".join(funcs))
         return
 
     def try_int(value):
@@ -44,6 +45,7 @@ def main():
             return int(value)
         except ValueError:
             return value
+
     args = [try_int(_) for _ in args]
 
     res = globals()[func](*args)
@@ -52,7 +54,7 @@ def main():
 
 
 log = logging.getLogger(__name__)
-if __name__ == '__main__':
+if __name__ == "__main__":
     log = logging.getLogger(pathlib.Path(__file__).stem)
     try:
         sys.exit(main())
