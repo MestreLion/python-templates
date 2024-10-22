@@ -1,4 +1,4 @@
-# Project Name
+# PROJECT_NAME
 
 Short Description, usually one line, at most 3.
 

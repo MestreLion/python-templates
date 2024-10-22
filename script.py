@@ -15,7 +15,7 @@
 #    You should have received a copy of the GNU General Public License
 #    along with this program. See <http://www.gnu.org/licenses/gpl.html>
 
-# This file is part of [PROJECT_NAME], see <https://github.com/MestreLion/[PROJECT_SLUG]>
+# This file is part of [PROJECT_NAME], see <https://github.com/MestreLion/[PROJECT]>
 # Copyright (C) [YEAR] Rodrigo Silva (MestreLion) <linux@rodrigosilva.com>
 # License: GPLv3 or later, at your choice. See <http://www.gnu.org/licenses/gpl>
 
@@ -31,7 +31,7 @@ import typing as t
 
 
 COPYRIGHT = """
-Copyright (C) 2023 Rodrigo Silva (MestreLion) <linux@rodrigosilva.com>
+Copyright (C) [YEAR] Rodrigo Silva (MestreLion) <linux@rodrigosilva.com>
 License: GPLv3 or later, at your choice. See <http://www.gnu.org/licenses/gpl>
 """
 

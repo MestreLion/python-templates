@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 #
-# This file is part of <project>, see <https://github.com/MestreLion/project>
-# Copyright (C) 2022 Rodrigo Silva (MestreLion) <linux@rodrigosilva.com>
+# This file is part of [PROJECT_NAME], see <https://github.com/MestreLion/[PROJECT]]>
+# Copyright (C) [YEAR] Rodrigo Silva (MestreLion) <linux@rodrigosilva.com>
 # License: GPLv3 or later, at your choice. See <http://www.gnu.org/licenses/gpl>
 
 """
