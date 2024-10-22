@@ -5,7 +5,7 @@
 # Inspired by https://venthur.de/2021-03-31-python-makefiles.html
 # Advanced version found at https://github.com/MestreLion/hackmatch
 
-# For customizing defaults, such as PYTHON
+# To customize defaults, such as PYTHON
 -include .env
 
 ## SLUG: Short project name
@@ -56,7 +56,6 @@ upload: venv build
 $(ENV_DIR)/done: pyproject.toml
 	$(PYTHON) -m venv $(ENV_DIR)
 	$(python) -m pip --disable-pip-version-check install --upgrade pip
-#	$(pip) install --upgrade setuptools  # likely not needed, as build will be isolated
 	$(pip) install --upgrade -e .[dev,publish]
 	touch -- $@
 

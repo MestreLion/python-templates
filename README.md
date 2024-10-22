@@ -17,9 +17,9 @@ Features
 Installing
 ----------
 
-Run this to install the bot and its dependencies, preferably in a virtual environment:
+To install the project and dependencies, preferably in a virtual environment:
 
-    pip3 install PROJECT
+    pip3 install .
 
 > _**Note**: Fully tested on Python 3.8, should work fine on all later python versions._
 
