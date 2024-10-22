@@ -9,9 +9,10 @@ It can, and maybe should, contain additional paragraphs such as this one.
 
 Whatever goes here is a nice candidate as the README's abstract, and vice-versa.
 """
+from __future__ import annotations
+
 import logging
 import sys
-import typing_extensions as t
 
 from . import util as u
 
@@ -20,7 +21,7 @@ __version__ = "2023.9.1"  # no leading zeros! https://semver.org/#spec-item-2
 log: logging.Logger = logging.getLogger(__package__)
 
 
-def cli(argv: t.Optional[t.List[str]] = None) -> None:
+def cli(argv: list[str] | None = None) -> None:
     """Command-line argument handling and logging setup"""
     parser = u.ArgumentParser(description=__doc__, version=__version__)
     parser.add_argument(
@@ -53,7 +54,7 @@ def cli(argv: t.Optional[t.List[str]] = None) -> None:
     log.info("Hello World!")
 
 
-def run(argv: t.Optional[t.List[str]] = None) -> None:
+def run(argv: list[str] | None = None) -> None:
     """CLI entry point, handling exceptions from cli() and setting exit code"""
     try:
         cli(argv)

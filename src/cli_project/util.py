@@ -40,11 +40,11 @@ class ProjectError(Exception):
     """
 
     def __init__(
-        self, msg: object = "", *args: object, errno: int = 0, e: t.Optional[Exception] = None
+        self, msg: object = "", *args: object, errno: int = 0, e: Exception | None = None
     ):
         super().__init__((str(msg) % args) if args else msg)
         self.errno: int = errno
-        self.e: t.Optional[Exception] = e
+        self.e: Exception | None = e
 
 
 class ProjectSimpleError(Exception):
@@ -148,7 +148,7 @@ class ArgumentParser(argparse.ArgumentParser):
         multiline: bool = False,
         loglevel_options: str = "loglevel",
         debug_option: str = "debug",
-        version: t.Optional[str] = None,
+        version: str | None = None,
         **kwargs: t.Any,
     ):
         super().__init__(*args, **kwargs)
@@ -210,7 +210,7 @@ class ArgumentParser(argparse.ArgumentParser):
 
 @contextlib.contextmanager
 def openstd(
-    path: t.Optional["PathLike"] = None, mode: str = "r"
+    path: PathLike | None = None, mode: str = "r"
 ) -> t.Generator[t.IO[t.Any], None, None]:
     """
     Context wrapping open() to return stdin/stdout when path is "-"
